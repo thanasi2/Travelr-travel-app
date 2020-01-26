@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Buddy</title>
+    <link href="https://fonts.googleapis.com/css?family=Gayathri&display=swap" rel="stylesheet">
+  </head>
+    <body>
+      <header>
+        <h1 id="header"><span id="firstLet">T</span>ravel<span class="rotate">r</span></h1>
+      </header>
+      <main>
+        <section>
+          <br>
+          <form id="form">
+            <label for="where">Where are you headed?</label>
+            <input id="formInput" class="input" name="where"></input>
+            <label for="where">When are you going?</label>
+            <input id="date" class="input" type="date" name="date"></input>
+            <input class="button" type="button" onclick="return Client.handleSubmit(event)" value="Let's Go!">
+          </form>
+        </section>
+        <section id='trips'>
+          <h3 id="myTrips">My Trips</h3>
+          <div class="card">
+            <div class="tripInfo">
+            <h3>My Trip to: <span id="where"></span></h3>
+            <h3>On: <span id="when"></span></h3>
+            <h3>Weather forecast: <span id="weather"></span></h3>
+            <button class="button">+ Save Trip</button>
+            </div>
+            <div id="img">
+            </div>
+          </div>
+        </section>
+      </main>
+        <!-- <script>
+    // Check that service workers are supported
+          if ('serviceWorker' in navigator) {
+        // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+              navigator.serviceWorker.register('/service-worker.js');
+        });
+    }
+</script> -->
+    </body>
+</html>

@@ -1,0 +1,22 @@
+header {
+  font-family: 'Gayathri', sans-serif;
+  display: grid;
+  background-color: #58c4ff;
+  width: 100%;
+  color:  #5f5f5f;
+}
+
+#header {
+  position: relative;
+  margin-bottom: 0px;
+  font-size: 3em;
+}
+
+#firstLet {
+  color: #ff612f
+}
+
+.rotate {
+  display: inline-block;
+  transform:rotate(25deg) translateY(3px);
+}

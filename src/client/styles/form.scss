@@ -1,0 +1,28 @@
+form {
+  display: grid;
+  font-size: 1.5em;
+  color: white;
+  max-width: 500px;
+  margin: 10px auto;;
+}
+
+.input {
+  border-radius: 5px;
+  font-style: italic
+}
+
+.button {
+  padding: 10px;
+  margin: 10px auto;
+  background-color: transparent;
+  color: #58c4ff;
+  border-color: #ff612f;
+  font-size: 1em;;
+  border-radius: 28px;
+  max-width: 150px;
+}
+
+.button:hover {
+  background-color: #ff612f;
+  border-color: transparent;
+}
