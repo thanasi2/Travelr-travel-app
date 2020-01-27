@@ -8,9 +8,9 @@ img {
   border-radius: 10px;
 }
 
-.card {
+#card {
   color: #58c4ff;
-  display: flex;
+  display: none;
   flex-direction: row-reverse;
   max-width: 900px;
   width: 80%;
@@ -34,12 +34,14 @@ img {
 }
 
 #myTrips {
+  display: grid;
   text-align: center;
   color: #58c4ff;
+  max-width: 200px;
+  margin: auto;
 }
 
 #trips {
-  display: none;
   width: 100%;
 }
 

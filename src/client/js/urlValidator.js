@@ -1,16 +1,36 @@
-// function to validate URL
-function validateURL(url){
-
-  const regEx = /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/i;
-
-  if (regEx.test(url) === true){
-    return true
-    console.log("valid URL")
-  }else {
-    return false
-    console.log('invalid URL')
+function addTrip(){
+  const saveTrip = async (url = '', data = {})=>{
+    const res = await fetch(url, {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    try {
+      const newData = await res.json();
+      alert('Trip Saved!');
+      for(var x = 0; x < newData.length; x++){
+        const myTrips = document.getElementById('savedTrips');
+        var place = newData[x].location;
+        var date = newData[x].date;
+        myTrips.insertAdjacentHTML('beforeend', `<option>${place} on ${date} </option>`);
+      }
+    }catch(error) {
+      console.log('error', error);
+    }
   }
+var loc = document.getElementById('where').innerText;
+var date = document.getElementById('when').innerText;
+var weather = document.getElementById('weather').innerText;
+var pic = document.getElementById('img').innerHTML;
 
+  saveTrip('http://localhost:8080/addTrip', {
+    location: loc,
+    weather: weather,
+    date: date,
+    picURL: pic,})
 }
 
-export { validateURL }
+export { addTrip }

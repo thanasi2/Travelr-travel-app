@@ -31,6 +31,25 @@ app.get('/test', function (req, res) {
     res.send({'url':'http://testurl.com'})
 });
 
+const data = [];
+
+app.post('/addTrip', function(req, res) {
+  let newData = req.body;
+  let newEntry = {
+    location: newData.location,
+    weather: newData.weather,
+    date: newData.date,
+    picURL: newData.picURL,
+  }
+  data.unshift(newEntry);
+  console.log(newEntry)
+  res.send(data);
+})
+
+app.get('/trips', function (req, res) {
+    res.send(data);
+});
+
 // app.get('/api', apiResponse.apiRes)
 //
 // module.exports = app;

@@ -6,7 +6,7 @@
     <title>Travel Buddy</title>
     <link href="https://fonts.googleapis.com/css?family=Gayathri&display=swap" rel="stylesheet">
   </head>
-    <body>
+    <body onload="Client.pageLoad()">
       <header>
         <h1 id="header"><span id="firstLet">T</span>ravel<span class="rotate">r</span></h1>
       </header>
@@ -22,16 +22,11 @@
           </form>
         </section>
         <section id='trips'>
-          <h3 id="myTrips">My Trips</h3>
-          <div class="card">
-            <div class="tripInfo">
-            <h3>My Trip to: <span id="where"></span></h3>
-            <h3>On: <span id="when"></span></h3>
-            <h3>Weather forecast: <span id="weather"></span></h3>
-            <button class="button">+ Save Trip</button>
-            </div>
-            <div id="img">
-            </div>
+          <div id="myTrips">
+            <h3>My Trips</h3>
+            <select id="savedTrips">
+              <option></option>
+            </select>
           </div>
         </section>
       </main>

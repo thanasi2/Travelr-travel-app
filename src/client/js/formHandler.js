@@ -2,10 +2,28 @@ import Geonames from 'geonames.js';
 //handles submit from index.html
 function handleSubmit(event) {
   event.preventDefault();
+  if(document.getElementById('card')) {
+      document.getElementById('card').remove();
+  }
 
   function revealCard() {
-    var card = document.getElementById('trips');
-    card.style.display ='block'
+    var card = document.getElementById('card');
+    card.style.display ='flex'
+  }
+
+  function createCard() {
+    var trips = document.getElementById('trips');
+    var card = `<div id="card">
+      <div class="tripInfo">
+      <h3>My Trip to: <span id="where"></span></h3>
+      <h3>On: <span id="when"></span></h3>
+      <h3>Weather forecast: <span id="weather"></span></h3>
+      <button class="button" onclick="Client.addTrip()">+ Save Trip</button>
+      </div>
+      <div id="img">
+      </div>
+    </div>`;
+    trips.insertAdjacentHTML('beforeend', card)
   }
 
  /* es module */
@@ -21,7 +39,7 @@ function handleSubmit(event) {
     const res = await fetch(baseURL+formInput+maxResult+username)
     try {
       const response = await res.json();
-      // console.log(response.geonames[0]);
+      console.log(response.geonames[0]);
       const data =  response.geonames[0];
       var where = document.getElementById('where');
       where.textContent = data.name;
@@ -62,6 +80,7 @@ function handleSubmit(event) {
     }
   }
 
+  // gets picture from pixabay using location as parameters
   const getPic = async (locData)=>{
     const baseURL = 'https://pixabay.com/api/?key='
     const key = '14992408-5e1d897276a36e9c3aff8b49a'
@@ -108,7 +127,7 @@ function handleSubmit(event) {
 
 
   setTimeout(revealCard, 1500);
-
+  createCard();
   getLoc()
   .then(function(data){
     getWeather(data);
