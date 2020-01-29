@@ -8,7 +8,15 @@ function handleSubmit(event) {
 
   function revealCard() {
     var card = document.getElementById('card');
-    card.style.display ='flex'
+    card.style.display ='flex';
+    var countdown = document.getElementById('countdown');
+    var tripDate = document.getElementById('date').value;
+    var year = tripDate.slice(0,4) + '-'
+    var month = tripDate.slice(5,7) + '-'
+    var day = tripDate.slice(8,10)
+    var newTripDate = new Date(year+month+day+"T00:00:00").getTime();
+    var days = newTripDate - (new Date().getTime());
+    countdown.textContent = (days/1000/60/60/24).toFixed(0);
   }
 
   function createCard() {
@@ -17,6 +25,7 @@ function handleSubmit(event) {
       <div class="tripInfo">
       <h3>My Trip to: <span id="where"></span></h3>
       <h3>On: <span id="when"></span></h3>
+      <h3>Days Until Trip:  <span id="countdown"></span> !</h3>
       <h3>Weather forecast: <span id="weather"></span></h3>
       <button class="button" onclick="Client.addTrip(); Client.pageLoad()">+ Save Trip</button>
       <button class="button" onclick="Client.rmvTrip(); Client.pageLoad()">- Remove Trip</button>
@@ -127,7 +136,7 @@ function handleSubmit(event) {
   }
 
 
-  setTimeout(revealCard, 1500);
+  setTimeout(revealCard, 2000);
   createCard();
   getLoc()
   .then(function(data){
