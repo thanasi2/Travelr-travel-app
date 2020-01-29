@@ -26,3 +26,19 @@ form {
   background-color: #ff612f;
   border-color: transparent;
 }
+
+#myTrips {
+  display: grid;
+  text-align: center;
+  color: #58c4ff;
+  max-width: 200px;
+  margin: 20px auto;
+}
+
+#savedTrips {
+  border-radius: 5px;
+}
+
+#trips {
+  width: 100%;
+}

@@ -3,52 +3,6 @@ body {
     font-family: 'Gayathri', sans-serif;
 }
 
-img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-#card {
-  color: #58c4ff;
-  display: none;
-  flex-direction: row-reverse;
-  max-width: 900px;
-  width: 80%;
-  margin: auto;
-  border: 3px solid #ff612f;
-  border-radius: 10px;
-}
-
-.tripInfo {
-  float: right;
-  width: 50%;
-  height: 100%;
-  text-align: left;
-  margin: auto;
-
-}
-
-#img{
-  overflow: hidden;
-  margin: 0px 0px;
-}
-
-#myTrips {
-  display: grid;
-  text-align: center;
-  color: #58c4ff;
-  max-width: 200px;
-  margin: auto;
-}
-
-#trips {
-  width: 100%;
-}
-
-
-
-
-
 
 // reset
 html, body {

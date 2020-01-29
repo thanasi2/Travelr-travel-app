@@ -6,7 +6,7 @@
     <title>Travel Buddy</title>
     <link href="https://fonts.googleapis.com/css?family=Gayathri&display=swap" rel="stylesheet">
   </head>
-    <body onload="Client.pageLoad()">
+    <body>
       <header>
         <h1 id="header"><span id="firstLet">T</span>ravel<span class="rotate">r</span></h1>
       </header>
@@ -18,13 +18,13 @@
             <input id="formInput" class="input" name="where"></input>
             <label for="where">When are you going?</label>
             <input id="date" class="input" type="date" name="date"></input>
-            <input class="button" type="button" onclick="return Client.handleSubmit(event)" value="Let's Go!">
+            <input class="button" id="submit" type="button" value="Let's Go!">
           </form>
         </section>
         <section id='trips'>
           <div id="myTrips">
             <h3>My Trips</h3>
-            <select id="savedTrips">
+            <select onchange="Client.retrieve()" id="savedTrips">
               <option></option>
             </select>
           </div>

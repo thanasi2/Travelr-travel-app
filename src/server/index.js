@@ -33,6 +33,7 @@ app.get('/test', function (req, res) {
 
 const data = [];
 
+// adds trip data
 app.post('/addTrip', function(req, res) {
   let newData = req.body;
   let newEntry = {
@@ -43,6 +44,22 @@ app.post('/addTrip', function(req, res) {
   }
   data.unshift(newEntry);
   console.log(newEntry)
+  res.send(data);
+})
+
+// removes trip data
+app.post('/rmvTrip', function(req, res) {
+  let rmvData = req.body;
+  for (var x = 0; x < data.length; x++) {
+    if (data[x].location === rmvData.location && data[x].date === rmvData.date) {
+      console.log("I found the removal")
+      data.splice(x,1);
+      console.log(data);
+      break;
+    }else{
+      console.log('Could not delete trip')
+    }
+  }
   res.send(data);
 })
 

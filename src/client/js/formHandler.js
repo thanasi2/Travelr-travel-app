@@ -18,7 +18,8 @@ function handleSubmit(event) {
       <h3>My Trip to: <span id="where"></span></h3>
       <h3>On: <span id="when"></span></h3>
       <h3>Weather forecast: <span id="weather"></span></h3>
-      <button class="button" onclick="Client.addTrip()">+ Save Trip</button>
+      <button class="button" onclick="Client.addTrip(); Client.pageLoad()">+ Save Trip</button>
+      <button class="button" onclick="Client.rmvTrip(); Client.pageLoad()">- Remove Trip</button>
       </div>
       <div id="img">
       </div>

@@ -17,7 +17,7 @@ function pageLoad(){
         for(var x = 0; x < savedTripData.length; x++){
           var place = savedTripData[x].location;
           var date = savedTripData[x].date;
-          myTrips.insertAdjacentHTML('beforeend', `<option>${place} on ${date} </option>`)
+          myTrips.insertAdjacentHTML('beforeend', `<option data-place="${place}" data-date="${date}">${place} ${date}</option>`)
         }
       }
 
@@ -30,5 +30,6 @@ function pageLoad(){
   reset();
   checkSavedTrips();
 }
+window.onload = pageLoad()
 
 export { pageLoad }
