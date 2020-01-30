@@ -7,13 +7,10 @@ function pageLoad(){
     const res = await fetch(url)
     try {
       const savedTripData = await res.json();
-      console.log("trip data retrieved")
-      console.log(savedTripData);
       const myTrips = document.getElementById('savedTrips');
       if(savedTripData.length === 0) {
-        console.log("no saved trips");
+
       }else {
-        console.log(`you have ${savedTripData.length} saved trips`)
         for(var x = 0; x < savedTripData.length; x++){
           var place = savedTripData[x].location;
           var date = savedTripData[x].date;

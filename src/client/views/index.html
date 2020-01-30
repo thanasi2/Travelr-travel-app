@@ -15,7 +15,7 @@
           <br>
           <form id="form">
             <label for="where">Where are you headed?</label>
-            <input id="formInput" class="input" name="where"></input>
+            <input id="formInput" class="input" type="text" size="50" name="where"></input>
             <label for="where">When are you going?</label>
             <input id="date" class="input" type="date" name="date"></input>
             <input class="button" id="submit" type="button" value="Let's Go!">
@@ -24,7 +24,7 @@
         <section id='trips'>
           <div id="myTrips">
             <h3>My Trips</h3>
-            <select onchange="Client.retrieve()" id="savedTrips">
+            <select id="savedTrips">
               <option></option>
             </select>
           </div>

@@ -1,11 +1,16 @@
 
 function eventListen(){
- var sbmt = document.getElementById('submit');
+ const sbmt = document.getElementById('submit');
  sbmt.addEventListener('click', ()=>{
    Client.handleSubmit(event);
-   alert('clicked!')
- })
+ });
+
+ const tripChange = document.getElementById('savedTrips');
+ tripChange.addEventListener('change', ()=>{
+   Client.retrieve();
+ });
 }
+
 eventListen();
 
 

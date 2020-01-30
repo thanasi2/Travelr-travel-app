@@ -2,7 +2,6 @@
 var path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
-const apiResponse = require('./API.js')
 
 
 const app = express()
@@ -14,8 +13,6 @@ app.use(bodyParser.json());
 
 const cors = require('cors');
 app.use(cors());
-
-console.log(__dirname)
 
 app.get('/', function (req, res) {
     res.sendFile(path.resolve('dist/index.html'))
@@ -52,9 +49,8 @@ app.post('/rmvTrip', function(req, res) {
   let rmvData = req.body;
   for (var x = 0; x < data.length; x++) {
     if (data[x].location === rmvData.location && data[x].date === rmvData.date) {
-      console.log("I found the removal")
       data.splice(x,1);
-      console.log(data);
+      console.log("Trip deleted");
       break;
     }else{
       console.log('Could not delete trip')
@@ -66,7 +62,3 @@ app.post('/rmvTrip', function(req, res) {
 app.get('/trips', function (req, res) {
     res.send(data);
 });
-
-// app.get('/api', apiResponse.apiRes)
-//
-// module.exports = app;

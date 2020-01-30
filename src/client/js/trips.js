@@ -40,13 +40,13 @@ function rmvTrip(){
     try {
       const newData = await res.json();
       alert('Trip Deleted!');
+      document.getElementById('card').remove()
     }catch(error) {
       console.log('error', error);
     }
   }
   var loc = document.getElementById('where').innerText;
   var date = document.getElementById('when').innerText;
-
   deleteTrip('http://localhost:8080/rmvTrip', {
     location: loc,
     date: date,
@@ -63,8 +63,6 @@ function retrieve() {
       var when = trips.options[trips.selectedIndex].dataset.date;
       for (var x = 0; x < tripData.length; x++) {
         if (where === tripData[x].location && when === tripData[x].date) {
-          console.log("trip Founds");
-          console.log(tripData[x]);
           createCard();
           var newWeather = tripData[x].weather;
           var newDate = tripData[x].date;
@@ -74,7 +72,7 @@ function retrieve() {
           document.getElementById('weather').innerText = newWeather;
           document.getElementById('when').innerText = newDate;
           document.getElementById('img').innerHTML = newPic;
-          revealCard();
+          revealCard(tripData[x].date);
           break;
         }else {
           document.getElementById('card').remove();
@@ -90,14 +88,13 @@ function retrieve() {
   getTrip('http://localhost:8080/trips')
 }
 
-function revealCard() {
+function revealCard(savedDate) {
   var card = document.getElementById('card');
   card.style.display ='flex';
   var countdown = document.getElementById('countdown');
-  var tripDate = document.getElementById('date').value;
-  var year = tripDate.slice(0,4) + '-'
-  var month = tripDate.slice(5,7) + '-'
-  var day = tripDate.slice(8,10)
+  var year = savedDate.slice(6,10) + '-'
+  var month = savedDate.slice(0,2) + '-'
+  var day = savedDate.slice(3,5)
   var newTripDate = new Date(year+month+day+"T00:00:00").getTime();
   var days = newTripDate - (new Date().getTime());
   countdown.textContent = (days/1000/60/60/24).toFixed(0);
@@ -109,7 +106,7 @@ function createCard() {
     <div class="tripInfo">
     <h3>My Trip to: <span id="where"></span></h3>
     <h3>On: <span id="when"></span></h3>
-    <h3>Days Until Trip:  <span id="countdown"></span> !</h3>
+    <h3>Days Until Trip:  <span id="countdown"></span></h3>
     <h3>Weather forecast: <span id="weather"></span></h3>
     <button class="button" onclick="Client.addTrip(); Client.pageLoad()">+ Save Trip</button>
     <button class="button" onclick="Client.rmvTrip(); Client.pageLoad()">- Remove Trip</button>

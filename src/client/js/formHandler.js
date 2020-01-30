@@ -25,7 +25,7 @@ function handleSubmit(event) {
       <div class="tripInfo">
       <h3>My Trip to: <span id="where"></span></h3>
       <h3>On: <span id="when"></span></h3>
-      <h3>Days Until Trip:  <span id="countdown"></span> !</h3>
+      <h3>Days Until Trip:  <span id="countdown"></span></h3>
       <h3>Weather forecast: <span id="weather"></span></h3>
       <button class="button" onclick="Client.addTrip(); Client.pageLoad()">+ Save Trip</button>
       <button class="button" onclick="Client.rmvTrip(); Client.pageLoad()">- Remove Trip</button>
@@ -49,7 +49,6 @@ function handleSubmit(event) {
     const res = await fetch(baseURL+formInput+maxResult+username)
     try {
       const response = await res.json();
-      console.log(response.geonames[0]);
       const data =  response.geonames[0];
       var where = document.getElementById('where');
       where.textContent = data.name;
@@ -80,9 +79,9 @@ function handleSubmit(event) {
       when.textContent = (month + day + '-' + year.slice(0,4));
       var wthrSummary = document.getElementById('weather');
       var summary = weatherData.daily.data[0].summary;
-      var tempHigh = weatherData.daily.data[0].temperatureHigh;
-      var tempLow = weatherData.daily.data[0].temperatureLow;
-      wthrSummary.textContent = `${summary} Temeratures will be a high of ${tempHigh} and a low of ${tempLow}`
+      var tempHigh = weatherData.daily.data[0].temperatureHigh.toFixed(0);
+      var tempLow = weatherData.daily.data[0].temperatureLow.toFixed(0);
+      wthrSummary.textContent = `${summary} Temeratures will be a high of ${tempHigh} degrees F and a low of ${tempLow} degrees F`
       return weatherData;
     }  catch(error) {
       console.log("error", error);
@@ -106,9 +105,8 @@ function handleSubmit(event) {
           var webIMG = imgResults.hits[x].webformatURL
           var imgContainer = document.getElementById('img');
           imgContainer.insertAdjacentHTML('afterbegin', `<img src='${webIMG}'>`)
-          break
+          break;
         }else {
-          console.log("wrong size")
           x++
         }
       }
@@ -119,7 +117,6 @@ function handleSubmit(event) {
       var imgData = await res.json()
       // checks to see if search returns pics, if not searches again with new parameters
       if(imgData.totalHits === 0) {
-        console.log("zero hits")
         const state = locData.adminName1;
         // fetch images from pixabay
         var res = await fetch(baseURL + key + '&q=' + state + '&' + imgType);
@@ -127,21 +124,23 @@ function handleSubmit(event) {
         checkSize(imgData);
       }else{
         checkSize(imgData);
-    }
-      console.log(imgData);
-    }  catch(error) {
+      }
+    } catch(error) {
       console.log("error", error);
       // appropriately handle the error
     }
   }
 
 
-  setTimeout(revealCard, 2000);
   createCard();
   getLoc()
   .then(function(data){
     getWeather(data);
-    getPic(data);
+    getPic(data)
+    .then(function(){
+      setTimeout(revealCard, 1000)
+    })
+
   })
 }
 
