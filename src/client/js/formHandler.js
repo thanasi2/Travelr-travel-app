@@ -31,6 +31,7 @@ function handleSubmit(event) {
       <button class="button" onclick="Client.rmvTrip(); Client.pageLoad()">- Remove Trip</button>
       </div>
       <div id="img">
+        <a href="https://pixabay.com" target='_blank' ><img id='pixaLogo' src='https://pixabay.com/static/img/logo_square.png' alt='pixabay'></a>
       </div>
     </div>`;
     trips.insertAdjacentHTML('beforeend', card)
@@ -64,8 +65,8 @@ function handleSubmit(event) {
   const getWeather = async (locData)=>{
     const corsProxy = "https://cors-anywhere.herokuapp.com/"
     const baseURL = 'https://api.darksky.net/forecast/'
-    const key = 'dda4c9b2f41b7364525306fa3f910714/'
-    const lat = locData.lat + ','
+    const key = process.env.DARKSKY_KEY;
+    const lat = '/' + locData.lat + ','
     var lng = locData.lng + ','
     var date = document.getElementById('date').value
     var year = date.slice(0,4) + '-'
@@ -92,7 +93,7 @@ function handleSubmit(event) {
   // gets picture from pixabay using location as parameters
   const getPic = async (locData)=>{
     const baseURL = 'https://pixabay.com/api/?key='
-    const key = '14992408-5e1d897276a36e9c3aff8b49a'
+    const key = process.env.PIXA_KEY;
     const city = locData.name;
     const country =locData.countryName;
     const imgType = 'image_type=photo'
@@ -104,7 +105,7 @@ function handleSubmit(event) {
         if (imgResults.hits[x].webformatHeight > 400 && imgResults.hits[x].webformatHeight < 600) {
           var webIMG = imgResults.hits[x].webformatURL
           var imgContainer = document.getElementById('img');
-          imgContainer.insertAdjacentHTML('afterbegin', `<img src='${webIMG}'>`)
+          imgContainer.insertAdjacentHTML('afterbegin', `<img id='locIMG' src='${webIMG}'>`)
           break;
         }else {
           x++

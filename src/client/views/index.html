@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Buddy</title>
+    <title>Travelr</title>
     <link href="https://fonts.googleapis.com/css?family=Gayathri&display=swap" rel="stylesheet">
   </head>
     <body>
@@ -14,10 +14,10 @@
         <section>
           <br>
           <form id="form">
-            <label for="where">Where are you headed?</label>
-            <input id="formInput" class="input" type="text" size="50" name="where"></input>
-            <label for="where">When are you going?</label>
-            <input id="date" class="input" type="date" name="date"></input>
+            <label>Where are you headed?</label>
+            <input id="formInput" class="input" type="text" size="50" name="where">
+            <label>When are you going?</label>
+            <input id="date" class="input" type="date" name="date">
             <input class="button" id="submit" type="button" value="Let's Go!">
           </form>
         </section>
@@ -25,12 +25,12 @@
           <div id="myTrips">
             <h3>My Trips</h3>
             <select id="savedTrips">
-              <option></option>
+              <option label='empty'></option>
             </select>
           </div>
         </section>
       </main>
-        <!-- <script>
+        <script>
     // Check that service workers are supported
           if ('serviceWorker' in navigator) {
         // Use the window load event to keep the page load performant
@@ -38,6 +38,6 @@
               navigator.serviceWorker.register('/service-worker.js');
         });
     }
-</script> -->
+</script>
     </body>
 </html>

@@ -1,3 +1,4 @@
+// adds trip to server
 function addTrip(){
   const saveTrip = async (url = '', data = {})=>{
     const res = await fetch(url, {
@@ -26,7 +27,7 @@ function addTrip(){
     date: date,
     picURL: pic,})
 }
-
+// removes trip from server
 function rmvTrip(){
   const deleteTrip = async (url = '', data = {})=>{
     const res = await fetch(url, {
@@ -52,7 +53,7 @@ function rmvTrip(){
     date: date,
 })
 }
-
+// retrieves stored trips from server
 function retrieve() {
   const getTrip = async (url = '')=>{
     const res = await fetch(url)
@@ -75,7 +76,9 @@ function retrieve() {
           revealCard(tripData[x].date);
           break;
         }else {
-          document.getElementById('card').remove();
+          if (document.getElementById('card')) {
+            document.getElementById('card').remove();
+          }
         }
       }
 
@@ -112,6 +115,7 @@ function createCard() {
     <button class="button" onclick="Client.rmvTrip(); Client.pageLoad()">- Remove Trip</button>
     </div>
     <div id="img">
+      <a href="https://pixabay.com" target='_blank' ><img id='pixaLogo' src='https://pixabay.com/static/img/logo_square.png' alt='pixabay'></a>
     </div>
   </div>`;
   trips.insertAdjacentHTML('beforeend', card)

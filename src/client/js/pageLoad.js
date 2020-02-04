@@ -1,7 +1,9 @@
 function pageLoad(){
   const reset = function(){
     const myTrips = document.getElementById('savedTrips');
-    myTrips.innerHTML = '<option></option>'
+    if(myTrips){
+      myTrips.innerHTML = '<option></option>'
+    }
   }
   const checkSavedTrips = async (url = 'http://localhost:8080/trips')=>{
     const res = await fetch(url)

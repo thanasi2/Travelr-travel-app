@@ -62,3 +62,5 @@ app.post('/rmvTrip', function(req, res) {
 app.get('/trips', function (req, res) {
     res.send(data);
 });
+
+module.exports = app;
