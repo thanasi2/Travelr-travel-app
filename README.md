@@ -19,7 +19,7 @@ PIXA_KEY='**********************************'
 First we have to create a `dist` folder. This can be done be running the command `npm run build-prod`. Once the `dist` folder has been created run the command `npm run start`. This app runs on localhost:8080, navigate to http://localhost:8080/ in your browser.
 
 ## UI
-!['UI'](pics/UI.png)
+!['UI'](/pics/UI.PNG)
 To use enter a destination and a date a click "Let's Go!" The UI will update with a "card" that shows your trip info. If you'd like to save this trip click "+ Save Trip" This trip will now be stored in the dropdown labeled "My Trips". If you would like to remove a trip click "- Remove Trip", if the trip card that is displayed is not the card you'd like to remove navigate to the trip you'd like to remove under "My Trips" and then click "- Remove Trip".
 !['Trip](pics/trip.png)
 
