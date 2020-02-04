@@ -21,10 +21,10 @@ First we have to create a `dist` folder. This can be done be running the command
 ## UI
 !['UI'](/pics/UI.PNG)
 To use enter a destination and a date a click "Let's Go!" The UI will update with a "card" that shows your trip info. If you'd like to save this trip click "+ Save Trip" This trip will now be stored in the dropdown labeled "My Trips". If you would like to remove a trip click "- Remove Trip", if the trip card that is displayed is not the card you'd like to remove navigate to the trip you'd like to remove under "My Trips" and then click "- Remove Trip".
-!['Trip](pics/trip.png)
+!['Trip](/pics/trip.PNG)
 
 
 ## Testing
 All functions have been tested using `jest`.
 To run your own text run the command `npm run test`
-!['Tests'](pics/tests.png)
+!['Tests'](/pics/tests.PNG)
